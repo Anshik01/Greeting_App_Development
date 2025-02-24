@@ -2,11 +2,16 @@ package com.uc.greet.service;
 
 import com.uc.greet.dto.UserDTO;
 import com.uc.greet.entity.Greeting;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.uc.greet.repository.GreetingRepository;
 
 @Service
 public class GreetingService {
     private static final String template = "Hello, %s!";
+
+    @Autowired
+    private GreetingRepository greetingRepository;
 
     public Greeting greet(UserDTO userDTO){
         String name;
@@ -23,6 +28,7 @@ public class GreetingService {
             name = "World";
         }
 
-        return new Greeting(String.format(template, name));
+        Greeting greeting = new Greeting(String.format(template, name));
+        return greetingRepository.save(greeting);
     }
 }
