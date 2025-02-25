@@ -27,4 +27,9 @@ public class GreetController {
         // Uses the service layer to get a simple greeting message
         return greetingService.greet(userDTO);
     }
+
+    @GetMapping("/greet/{id}")
+    public Greeting getGreetingByID(@PathVariable Long id){
+        return greetingService.getGreetingByID(id);
+    }
 }
