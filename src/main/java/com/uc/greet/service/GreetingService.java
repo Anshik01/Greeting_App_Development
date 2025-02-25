@@ -54,4 +54,8 @@ public class GreetingService {
             return null; // Or throw an exception if preferred
         }
     }
+
+    public void deleteGreeting(Long id) {
+        greetingRepository.deleteById(id);
+    }
 }
