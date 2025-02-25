@@ -40,4 +40,9 @@ public class GreetController {
     public List<Greeting> getAllGreeting(){
         return greetingService.getAllGreetings();
     }
+
+    @PutMapping("/{id}")
+    public Greeting updateGreeting(@PathVariable Long id, @RequestBody Greeting greeting){
+        return greetingService.updateGreeting(id, greeting);
+    }
 }
